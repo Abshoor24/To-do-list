@@ -2,6 +2,8 @@ import { useRef, useState, useEffect } from "react";
 import "./App.css";
 import Form from "./Components/form";
 import Todolist from "./Components/todolist";
+import Footer from "./Components/Footer";
+
 function App() {
   const STORAGE = "TO-DO-LIST";
   const newTask = useRef('');
@@ -74,18 +76,35 @@ function App() {
     }
   }
 
+  function deleteAll() {
+    if (tasks.length === 0) {
+      alert("No tasks to delete");
+      return;
+    }
+
+    const konfirmasi = window.confirm("Are you sure you want to delete all tasks?");
+    if (konfirmasi){
+      setTasks([]);
+    }
+  }
+
   return (
-    <>
-      <Form addTask={tambahTask} newTask={newTask} taskCompleted={taskCompleted} tasks={tasks}
-       />
+    <div className="page-container">
+      <div className="content-wrapper">
+      <Form addTask={tambahTask} newTask={newTask} taskCompleted={taskCompleted} tasks={tasks} />
       <Todolist
+        deleteAll={deleteAll}
         tasks={tasks}
         setCompleted={setCompleted}
         move={move}
         remove={remove}
       />
-    </>
+      </div>
+      
+      <Footer />
+    </div>
   );
+  
 }
 
 export default App;

@@ -10,7 +10,7 @@ function form(props) {
 
         <form className="input-box">
             <input type="text" ref={props.newTask} placeholder="Add a new task..." />
-            <button type="submit" onClick={props.addTask}>Add Tasks</button>
+            <button type="submit" onClick={props.addTask}>+</button>
         </form>
 
     </div>

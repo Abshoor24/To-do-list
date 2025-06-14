@@ -25,6 +25,7 @@ function todolist(props) {
               <div className={`center ${classCompleted}`}>{item.task}</div>
               <div className="right">
                 <Icon
+                  deleteAll={props.deleteAll}
                   id={item.id}
                   tasks={props.tasks}
                   move={props.move}
@@ -35,7 +36,14 @@ function todolist(props) {
           );
         })}
       </ul>
-    </div>
+       {props.tasks.length > 0 && (
+      <div className="delete-all-wrapper">
+        <button onClick={props.deleteAll} className="delete-all-btn">
+          🗑️ Delete all tasks
+        </button>
+      </div>
+    )}
+      </div>
   );
 }
 

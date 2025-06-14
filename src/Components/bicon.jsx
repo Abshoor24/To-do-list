@@ -25,7 +25,6 @@ function bicon(props) {
     <span><button onClick={()=> props.move(currentIndex, prevIndex)}>{prevButton}</button></span>
     <span><button onClick={()=> props.move(currentIndex, nextIndex)}>{nextButton}</button></span>
     <span><button onClick={()=> props.remove(props.id)}>🗑️</button></span>
-    
    </>
   )
 }
