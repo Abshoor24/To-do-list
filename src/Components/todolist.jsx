@@ -2,6 +2,9 @@ import Icon from "./bicon";
 
 function todolist(props) {
   props.tasks.sort((a, b) => b.id - a.id);
+
+  
+
   return (
     <div className="wrapper">
       <ul>
@@ -36,13 +39,17 @@ function todolist(props) {
           );
         })}
       </ul>
-       {props.tasks.length > 0 && (
-      <div className="delete-all-wrapper">
-        <button onClick={props.deleteAll} className="delete-all-btn">
-          🗑️ Delete all tasks
-        </button>
-      </div>
+      {props.tasks.length > 0 && (
+        <div className="delete-all-wrapper">
+          <button
+            className="delete-all-btn"
+            onClick={props.handleDeleteAllClick}
+          >
+            Delete All
+          </button>
+        </div>
     )}
+
       </div>
   );
 }

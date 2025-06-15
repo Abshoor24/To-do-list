@@ -3,9 +3,12 @@ import "./App.css";
 import Form from "./Components/form";
 import Todolist from "./Components/todolist";
 import Footer from "./Components/Footer";
+import ConfirmDialog from './Components/ConfirmDialog';
 
 function App() {
-  const STORAGE = "TO-DO-LIST";
+  const [showDialog, setShowDialog] = useState(false);
+  const [dialogCallback, setDialogCallback] = useState(() => {});
+  const STORAGE = "TO-DO LIST";
   const newTask = useRef('');
   const [tasks, setTasks] = useState(() => {
     // kalo data ada                            // jika tidak ada akan mengembalikan array kosong
@@ -19,6 +22,22 @@ function App() {
     const complete = tasks.filter((item) => item.completed == true).length;
     setTaskCompleted(complete);
   }, [tasks]);
+
+  const handleDeleteALLCLick = () => {
+    if (tasks.length === 0) {
+      alert("No tasks to delete");
+      return;
+    }
+    setShowDialog(true);
+    setDialogCallback(() => () => {
+      setTasks([]);
+      setShowDialog(false);
+    });
+  }
+
+  const cancelDialog = () => {
+  setShowDialog(false);
+};
 
   function setId() {
     if (tasks == "") {
@@ -76,31 +95,32 @@ function App() {
     }
   }
 
-  function deleteAll() {
-    if (tasks.length === 0) {
-      alert("No tasks to delete");
-      return;
-    }
+  
 
-    const konfirmasi = window.confirm("Are you sure you want to delete all tasks?");
-    if (konfirmasi){
-      setTasks([]);
-    }
-  }
+    
+
 
   return (
     <div className="page-container">
       <div className="content-wrapper">
       <Form addTask={tambahTask} newTask={newTask} taskCompleted={taskCompleted} tasks={tasks} />
       <Todolist
-        deleteAll={deleteAll}
+        handleDeleteAllClick={handleDeleteALLCLick}
+        
         tasks={tasks}
         setCompleted={setCompleted}
         move={move}
         remove={remove}
       />
       </div>
-      
+      {showDialog && (
+      <ConfirmDialog
+        message="Are you sure you want to delete all tasks?"
+        onConfirm={dialogCallback}
+        onCancel={cancelDialog}
+      />
+    )}
+
       <Footer />
     </div>
   );
