@@ -7,14 +7,14 @@ function bicon(props) {
 
   let prevButton = '';
   if (props.tasks[prevIndex ] != undefined) {
-    prevButton = '👆';
+    prevButton = '🔼';
   }else {
     prevIndex = '';
   } 
 
   let nextButton = '';
   if (props.tasks[nextIndex ] != undefined) {
-    nextButton = '👇';
+    nextButton = '🔽';
   } else {
     nextIndex = '';
   }
