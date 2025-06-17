@@ -124,18 +124,6 @@ html {
   border: 2px solid rgba(255, 255, 255, 0.2);
 }
 
-.header {
-  @apply text-center mb-6;
-}
-
-h1 {
-  @apply text-3xl font-bold text-white flex items-center justify-center gap-2;
-}
-
-p {
-  @apply text-gray-400 text-sm mt-1 italic;
-}
-
 
 @keyframes pulse {
   0% { transform: scale(1); }
