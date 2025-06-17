@@ -4,6 +4,8 @@ import Form from "./Components/form";
 import Todolist from "./Components/todolist";
 import Footer from "./Components/Footer";
 import ConfirmDialog from './Components/ConfirmDialog';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   const [showDialog, setShowDialog] = useState(false);
@@ -32,6 +34,7 @@ function App() {
     setDialogCallback(() => () => {
       setTasks([]);
       setShowDialog(false);
+      toast.warn("🧹 Semua task telah dihapus!");
     });
   }
 
@@ -62,6 +65,7 @@ function App() {
 
     newTask.current.value = "";
     setTasks([...tasks, data]);
+    toast.success(`✅ Task "${data.task}" berhasil ditambahkan!`);
   }
 
   function setCompleted(id) {
@@ -74,6 +78,7 @@ function App() {
       }
     });
     setTasks(taskItem);
+    toast.info("📌 Status task diperbarui.");
     console.log(tasks);
   }
 
@@ -92,6 +97,7 @@ function App() {
   function remove(id) {
     if (window.confirm("Are you sure you want to delete this task?")) {
       setTasks(tasks.filter((item) => item.id != id));
+      toast.error("🗑️ Task berhasil dihapus!");
     }
   }
 
@@ -120,7 +126,7 @@ function App() {
         onCancel={cancelDialog}
       />
     )}
-
+    <ToastContainer position="top-right" autoClose={2000} theme="dark" />
       <Footer />
     </div>
   );

@@ -1,4 +1,6 @@
 import Icon from "./bicon";
+import { motion, AnimatePresence } from "framer-motion";
+
 
 function todolist(props) {
   props.tasks.sort((a, b) => b.id - a.id);
@@ -8,6 +10,7 @@ function todolist(props) {
   return (
     <div className="wrapper">
       <ul>
+        <AnimatePresence>
         {props.tasks.map((item) => {
           let radioCompleted = "";
           let classCompleted = "";
@@ -19,7 +22,13 @@ function todolist(props) {
           }
 
           return (
-            <li key={item.id}>
+            <motion.li
+              key={item.id}
+              initial={{opacity: 0, y: 10}}
+              animate={{opacity: 1, y: 0}}
+              exit={{opacity: 0, x: 100}}
+              transition={{duration: 0.2}}
+            >
               <div className="left">
                 <button onClick={() => props.setCompleted(item.id)}>
                   {radioCompleted}
@@ -35,9 +44,10 @@ function todolist(props) {
                   remove={props.remove}
                 />
               </div>
-            </li>
+            </motion.li>
           );
         })}
+        </AnimatePresence>
       </ul>
       {props.tasks.length > 0 && (
         <div className="delete-all-wrapper">
