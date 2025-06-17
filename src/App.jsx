@@ -112,13 +112,18 @@ function App() {
     return tasks;
   }
 
-    
+  function getEmoji() {
+  if (taskCompleted === 0) return "📝";
+  if (taskCompleted === tasks.length) return "🎉";
+  return "🚀";
+}
+
 
 
   return (
     <div className="page-container">
       <div className="content-wrapper">
-      <Form addTask={tambahTask} newTask={newTask} taskCompleted={taskCompleted} tasks={tasks} />
+      <Form addTask={tambahTask} newTask={newTask} taskCompleted={taskCompleted} tasks={tasks} getEmoji={getEmoji}/>
       <Todolist
         handleDeleteAllClick={handleDeleteALLCLick}
         tasks={getFilteredTasks()}
@@ -135,7 +140,7 @@ function App() {
         onCancel={cancelDialog}
       />
     )}
-    <ToastContainer position="top-right" autoClose={2000} theme="dark" />
+    <ToastContainer position="top-right" autoClose={1000} theme="dark" />
       <Footer />
     </div>
   );

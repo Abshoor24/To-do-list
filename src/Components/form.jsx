@@ -4,9 +4,18 @@ function form(props) {
   return (
     <div className="wrapper">
 
-        <header>
-            <h3> 🔰 To-do list</h3><span>{props.taskCompleted || '0'} / {props.tasks.length} </span>
-        </header>
+       <header>
+        <div className="title-section">
+          <h3> {props.getEmoji()} To-do list</h3>
+          <p className="subtitle">Stay focused. One task at a time.</p>
+        </div>
+        <div className="stats-box">
+          <span>✅ {props.taskCompleted}</span>
+          <span>/</span>
+          <span>📝 {props.tasks.length}</span>
+        </div>
+      </header>
+
 
         <form className="input-box">
             <input type="text" ref={props.newTask} placeholder="Add a new task..." />
@@ -16,5 +25,7 @@ function form(props) {
     </div>
   )
 }
+
+
 
 export default form
