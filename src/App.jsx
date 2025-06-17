@@ -101,7 +101,16 @@ function App() {
     }
   }
 
-  
+  const [filter, setFilter] = useState("all");
+
+  const getFilteredTasks = () => {
+    if (filter === "completed"){
+      return tasks.filter((task) => task.completed);
+    } else if (filter === "incomplete") {
+      return tasks.filter((task) => !task.completed);
+    }
+    return tasks;
+  }
 
     
 
@@ -112,8 +121,8 @@ function App() {
       <Form addTask={tambahTask} newTask={newTask} taskCompleted={taskCompleted} tasks={tasks} />
       <Todolist
         handleDeleteAllClick={handleDeleteALLCLick}
-        
-        tasks={tasks}
+        tasks={getFilteredTasks()}
+        setFilter={setFilter}
         setCompleted={setCompleted}
         move={move}
         remove={remove}

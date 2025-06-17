@@ -1,6 +1,6 @@
+import { div } from "framer-motion/client";
 import Icon from "./bicon";
 import { motion, AnimatePresence } from "framer-motion";
-
 
 function todolist(props) {
   props.tasks.sort((a, b) => b.id - a.id);
@@ -9,6 +9,11 @@ function todolist(props) {
 
   return (
     <div className="wrapper">
+      <div className="filter-button">
+        <button className={props.filter === "all" ? "active" : ""} onClick={() => props.setFilter("all")}>📋 All</button>
+        <button className={props.filter === "all" ? "active" : ""} onClick={() => props.setFilter("completed")}>✅ Completed</button>
+        <button className={props.filter === "all" ? "active" : ""} onClick={() => props.setFilter("incomplete")}>❌ Incomplete</button>
+      </div>
       <ul>
         <AnimatePresence>
         {props.tasks.map((item) => {
