@@ -64,7 +64,6 @@ function todolist(props) {
                     {radioCompleted}
                   </button>
                 </div>
-
                 <div className={`center ${classCompleted}`}>{item.task}</div>
                {isEditing ? (
                   <div className="edit-group">

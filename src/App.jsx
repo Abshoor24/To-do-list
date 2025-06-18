@@ -12,6 +12,7 @@ function App() {
   const [dialogCallback, setDialogCallback] = useState(() => {});
   const STORAGE = "TO-DO LIST";
   const newTask = useRef('');
+  const emojiRef = useRef('');
   const [tasks, setTasks] = useState(() => {
     // kalo data ada                            // jika tidak ada akan mengembalikan array kosong
     return JSON.parse(localStorage.getItem(STORAGE)) || [];
@@ -49,24 +50,25 @@ function App() {
       return tasks[0].id + 1;
     }
   }
-  function tambahTask(event) {
-    event.preventDefault();
-    if (newTask.current.value == "") {
-      alert("Please enter a task");
-      return false;
+  // Fungsi untuk menambahkan task
+  // event.preventDefault() digunakan untuk mencegah form submit yang menyebabkan reload halaman
+    function tambahTask(emoji, text) {
+      const trimmed = text.trim();
+      if (!trimmed) {
+        alert("Please enter a task");
+        return;
+      }
+
+      const data = {
+        id: setId(),
+        task: `${emoji} ${trimmed}`.trim(),
+        completed: false,
+      };
+
+      setTasks([...tasks, data]);
+      toast.success(`✅ Task "${data.task}" berhasil ditambahkan!`);
     }
-    console.log("Task added:", newTask.current.value);
 
-    const data = {
-      id: setId(),
-      task: newTask.current.value,
-      completed: false,
-    };
-
-    newTask.current.value = "";
-    setTasks([...tasks, data]);
-    toast.success(`✅ Task "${data.task}" berhasil ditambahkan!`);
-  }
 
   function setCompleted(id) {
     let taskItem = [];
@@ -128,10 +130,12 @@ const updateTask = (id, newText) => {
 }
 
 
+
+
   return (
     <div className="page-container">
       <div className="content-wrapper">
-      <Form addTask={tambahTask} newTask={newTask} taskCompleted={taskCompleted} tasks={tasks} getEmoji={getEmoji}/>
+      <Form addTask={tambahTask} newTask={newTask} taskCompleted={taskCompleted} tasks={tasks} getEmoji={getEmoji} emojiRef={emojiRef}/>
       <Todolist
         updateTask={updateTask}
         handleDeleteAllClick={handleDeleteALLCLick}

@@ -195,6 +195,64 @@ html {
   transform: translateY(0);
 }
 
+.input-box {
+  position: relative;
+  width: 100%;
+  margin-bottom: 25px;
+}
+
+.input-box .emoji-picker {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.input-box .task-input {
+  width: 100%;
+  padding: 16px 60px 16px 45px; /* sisakan ruang untuk emoji + tombol */
+  padding-left: 65x; /* sisakan ruang untuk emoji */
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50px;
+  outline: none;
+  border: 2px solid rgba(255,255,255,0.1);
+  color: #fff;
+  font-size: 16px;
+}
+
+.input-box .task-input::placeholder {
+  color: rgba(255,255,255,0.6);
+}
+
+.input-box .add-btn {
+  position: absolute;
+  right: 4px;
+  top: 4px;
+  bottom: 4px;
+  width: 52px;
+  background: linear-gradient(45deg, #00d26a, #00b359);
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  font-size: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 2;
+  transition: transform 0.2s ease;
+}
+
+.input-box .add-btn:hover {
+  transform: scale(1.1);
+}
+
+
 /** Enhanced List */
 .wrapper > ul {
   padding: 0px;
