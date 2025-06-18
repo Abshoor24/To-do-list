@@ -478,3 +478,20 @@ html {
   background-color: rgba(255, 255, 255, 0.1);
   transform: scale(1.05);
 }
+
+.edit-group,
+.task-group {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* jarak antar elemen */
+  cursor: pointer; /* kursor pointer untuk interaksi */
+  margin-right: 5px; /* jarak kanan */
+}
+
+.edit-group input {
+  flex-grow: 1;
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}

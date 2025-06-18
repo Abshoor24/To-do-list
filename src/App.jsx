@@ -119,12 +119,21 @@ function App() {
 }
 
 
+const updateTask = (id, newText) => {
+  const updatedTasks = tasks.map(tasks => 
+    tasks.id === id ? { ...tasks, task: newText } : tasks
+  );
+  setTasks(updatedTasks);
+  toast.info("📝 Task berhasil diperbarui!");
+}
+
 
   return (
     <div className="page-container">
       <div className="content-wrapper">
       <Form addTask={tambahTask} newTask={newTask} taskCompleted={taskCompleted} tasks={tasks} getEmoji={getEmoji}/>
       <Todolist
+        updateTask={updateTask}
         handleDeleteAllClick={handleDeleteALLCLick}
         tasks={getFilteredTasks()}
         setFilter={setFilter}
@@ -140,7 +149,7 @@ function App() {
         onCancel={cancelDialog}
       />
     )}
-    <ToastContainer position="top-right" autoClose={1000} theme="dark" />
+    <ToastContainer position="top-right" autoClose={800} theme="dark" />
       <Footer />
     </div>
   );

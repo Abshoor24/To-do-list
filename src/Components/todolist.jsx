@@ -1,8 +1,22 @@
 import Icon from "./bicon";
 import { motion, AnimatePresence } from "framer-motion";
+import { useState } from "react";
 
 function todolist(props) {
   props.tasks.sort((a, b) => b.id - a.id);
+  const [editingTaskId, setEditingTaskId] = useState(null);
+  const [editingTaskText, setEditingTaskText] = useState("");
+
+  const startEditing = (id, currentText) => {
+    setEditingTaskId(id);
+    setEditingTaskText(currentText);
+  }
+
+  const saveEditedTask = () => {
+    props.updateTask(editingTaskId, editingTaskText);
+    setEditingTaskId(null);
+    setEditingTaskText("");
+  }
 
   return (
     <div className="wrapper">
@@ -34,6 +48,7 @@ function todolist(props) {
           {props.tasks.map((item) => {
             let radioCompleted = item.completed ? "✅" : "◻️";
             let classCompleted = item.completed ? "strike" : "";
+            const isEditing = editingTaskId === item.id;
 
             return (
               <motion.li
@@ -49,7 +64,22 @@ function todolist(props) {
                     {radioCompleted}
                   </button>
                 </div>
+
                 <div className={`center ${classCompleted}`}>{item.task}</div>
+               {isEditing ? (
+                  <div className="edit-group">
+                    <input
+                      type="text"
+                      value={editingTaskText}
+                      onChange={(e) => setEditingTaskText(e.target.value)}
+                    />
+                    <button onClick={saveEditedTask}>💾</button>
+                  </div>
+                ) : (
+                  <div className="task-group">
+                    <button onClick={() => startEditing(item.id, item.task)}>✏️</button>
+                  </div>
+                )}
                 <div className="right">
                   <Icon
                     deleteAll={props.deleteAll}
