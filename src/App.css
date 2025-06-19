@@ -216,7 +216,7 @@ html {
 .input-box .task-input {
   width: 100%;
   padding: 16px 60px 16px 45px; /* sisakan ruang untuk emoji + tombol */
-  padding-left: 65x; /* sisakan ruang untuk emoji */
+  padding-left: 65px; /* sisakan ruang untuk emoji */
   background: rgba(255, 255, 255, 0.1);
   border-radius: 50px;
   outline: none;
