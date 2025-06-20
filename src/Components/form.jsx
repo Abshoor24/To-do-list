@@ -17,8 +17,8 @@ export default function Form({ addTask, taskCompleted, tasks, getEmoji }) {
     <div className="wrapper">
       <header>
         <div className="title-section">
-          <h3> {getEmoji()} To‑do list</h3>
-          <p className="subtitle">Stay focused. One task at a time.</p>
+          <h3> {getEmoji()} TO-DO LIST</h3>
+          <p className="subtitle">"Small steps, big goals."</p>
         </div>
         <div className="stats-box">
           <span>✅ {taskCompleted}</span>
