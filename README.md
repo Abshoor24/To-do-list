@@ -1,12 +1,37 @@
-# React + Vite
+# ✅ To-Do List App — React.js + Tailwind CSS
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+To-Do List modern dan interaktif dengan berbagai fitur UI/UX menarik, dibangun menggunakan React.js dan Tailwind CSS. Dilengkapi animasi transisi, notifikasi toast, drag & drop, dan emoji support.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Tech Stack
 
-## Expanding the ESLint configuration
+- ⚛️ **React.js** (Vite)
+- 🎨 **Tailwind CSS**
+- 💫 **Framer Motion** (animasi)
+- 🔔 **React-Toastify** (notifikasi)
+- 📦 **React Beautiful DnD** (drag & drop)
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## ✨ Fitur
+
+- ✅ Tambah, edit, dan hapus task
+- 📌 Custom confirm dialog saat menghapus
+- 🎉 Notifikasi toast saat aksi berhasil
+- 🎨 Transisi animasi halus saat menambah atau menghapus task
+- 🏷️ Filter tugas (semua / selesai / belum selesai)
+- 🎭 Drag & drop untuk menyusun ulang task
+- 😀 Ubah judul task dengan emoji
+- 💾 Penyimpanan data sementara (state lokal)
+
+---
+
+## 🖥️ Preview UI
+
+> (Tambahkan screenshot atau GIF jika ada)
+
+---
+
+## 📂 Struktur Proyek
+
