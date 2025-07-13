@@ -26,12 +26,3 @@ To-Do List modern dan interaktif dengan berbagai fitur UI/UX menarik, dibangun m
 - 💾 Penyimpanan data sementara (state lokal)
 
 ---
-
-## 🖥️ Preview UI
-
-> (Tambahkan screenshot atau GIF jika ada)
-
----
-
-## 📂 Struktur Proyek
-
