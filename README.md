@@ -1,4 +1,4 @@
-# ✅ To-Do List App — React.js + Tailwind CSS
+# ✅ To-Do List App with React.js + Tailwind CSS
 
 To-Do List modern dan interaktif dengan berbagai fitur UI/UX menarik, dibangun menggunakan React.js dan Tailwind CSS. Dilengkapi animasi transisi, notifikasi toast, drag & drop, dan emoji support.
 
